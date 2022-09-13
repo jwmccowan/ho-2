@@ -29,20 +29,22 @@ function Home(): JSX.Element {
       .catch(() => alert("Error!"));
   }
   return (
-    <div className="container mx-auto px-4">
-      <h1 className="py-12 mt-8 text-4xl font-bold">Create user</h1>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <TextInput {...register("name", { required: true })} label="Name" />
-        <TextInput {...register("email", { required: true })} label="Email" />
-        <div className="text-right">
-          <button
-            className="rounded bg-indigo-600 text-white hover:bg-indigo-700 font-medium px-3 py-2"
-            type="submit"
-          >
-            Create user
-          </button>
-        </div>
-      </form>
+    <div className="min-h-screen bg-blue-100 pt-8">
+      <div className="container mx-auto px-4">
+        <h1 className="py-12 text-4xl font-bold">Create user</h1>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+          <TextInput {...register("name", { required: true })} label="Name" />
+          <TextInput {...register("email", { required: true })} label="Email" />
+          <div className="text-right">
+            <button
+              className="rounded bg-indigo-600 text-white hover:bg-indigo-700 font-medium px-3 py-2"
+              type="submit"
+            >
+              Create user
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
