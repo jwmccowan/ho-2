@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import TextInput from "../../atoms/TextInput";
 
 interface FormValues {
@@ -21,7 +21,12 @@ async function createUser(values: FormValues) {
 }
 
 export default function CreateUserForm(): JSX.Element {
-  const { mutateAsync: mutateUser } = useMutation("/api/users", createUser);
+  const client = useQueryClient();
+  const { mutateAsync: mutateUser } = useMutation("/api/users", createUser, {
+    onSuccess() {
+      client.invalidateQueries("/api/users");
+    },
+  });
   const {
     formState: { errors },
     register,

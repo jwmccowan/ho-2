@@ -7,11 +7,18 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const { email } = JSON.parse(req.body);
+      const { email, name } = JSON.parse(req.body);
       const newUser = await prisma.user.create({
-        data: { email },
+        data: { email, name },
       });
       res.status(201).json(newUser);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  } else if (req.method === "GET") {
+    try {
+      const users = await prisma.user.findMany();
+      res.status(200).json(users);
     } catch (error) {
       res.status(400).json(error);
     }
