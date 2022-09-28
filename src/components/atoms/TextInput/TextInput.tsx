@@ -27,7 +27,10 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
       />
       <p
         role="alert"
-        className={classNames(error ? "h-5" : "h-0", "transition-all")}
+        className={classNames(
+          error ? "h-5" : "h-0",
+          "transition-all text-sm leading-loose text-red-600"
+        )}
       >
         {error}
       </p>

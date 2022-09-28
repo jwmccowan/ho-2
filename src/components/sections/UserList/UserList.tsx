@@ -42,7 +42,7 @@ export default function UserList(): JSX.Element {
               onClick={() => mutate(user.id)}
             >
               <span className="sr-only">Delete</span>
-              <FaTrash />
+              <FaTrash aria-roledescription="Trash can icon" />
             </button>
           </div>
         </li>
